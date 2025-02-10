@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 10px;
+        }
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+        .card.flipped {
+            background-color: #fff;
+            color: black;
+        }
+        .card.matched {
+            background-color: #4CAF50;
+            color: white;
+            cursor: default;
+        }
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-board" id="gameBoard"></div>
+<div class="game-over" id="gameOver">You Win!</div>
+
+<script>
+    const cardsArray = [
+        "A", "B", "C", "D", "E", "F", "G", "H",
+        "A", "B", "C", "D", "E", "F", "G", "H"
+    ];
+    let board = document.getElementById("gameBoard");
+    let gameOverElement = document.getElementById("gameOver");
+    let flippedCards = [];
+    let matchedCards = 0;
+    let totalMatches = cardsArray.length / 2;
+    
+    // Shuffle cards array
+    function shuffleCards(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Create cards
+    function createCard(cardValue) {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.value = cardValue;
+        card.addEventListener("click", flipCard);
+        board.appendChild(card);
+    }
+
+    // Flip card and check for match
+    function flipCard() {
+        if (this.classList.contains("flipped") || flippedCards.length === 2) {
+            return;
+        }
+        this.classList.add("flipped");
+        this.textContent = this.dataset.value;
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+            checkMatch();
+        }
+    }
+
+    // Check if two flipped cards match
+    function checkMatch() {
+        if (flippedCards[0].dataset.value === flippedCards[1].dataset.value) {
+            flippedCards[0].classList.add("matched");
+            flippedCards[1].classList.add("matched");
+            matchedCards++;
+            flippedCards = [];
+            if (matchedCards === totalMatches) {
+                gameOver();
+            }
+        } else {
+            setTimeout(() => {
+                flippedCards[0].classList.remove("flipped");
+                flippedCards[1].classList.remove("flipped");
+                flippedCards[0].textContent = "";
+                flippedCards[1].textContent = "";
+                flippedCards = [];
+            }, 1000);
+        }
+    }
+
+    // Display game over message
+    function gameOver() {
+        gameOverElement.style.display = "block";
+    }
+
+    // Initialize the game
+    function startGame() {
+        shuffleCards(cardsArray);
+        cardsArray.forEach(cardValue => createCard(cardValue));
+    }
+
+    startGame();
+</script>
+
+</body>
+</html>

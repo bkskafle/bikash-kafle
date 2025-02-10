@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .display {
+            background-color: #222;
+            color: #fff;
+            font-size: 2em;
+            padding: 10px;
+            text-align: right;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #444;
+            color: #fff;
+            font-size: 1.5em;
+            padding: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .button.operator {
+            background-color: #ff9500;
+        }
+
+        .button.operator:hover {
+            background-color: #ffaa33;
+        }
+
+        .button.equal {
+            background-color: #34c759;
+            grid-column: span 2;
+        }
+
+        .button.equal:hover {
+            background-color: #4cd964;
+        }
+
+        .button.clear {
+            background-color: #ff3b30;
+        }
+
+        .button.clear:hover {
+            background-color: #ff5e52;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+        <button class="button clear" onclick="clearDisplay()">C</button>
+        <button class="button operator" onclick="appendOperator('(')">(</button>
+        <button class="button operator" onclick="appendOperator(')')">)</button>
+        <button class="button operator" onclick="appendOperator('/')">/</button>
+        <button class="button operator" onclick="appendOperator('*')">*</button>
+        <button class="button" onclick="appendNumber(7)">7</button>
+        <button class="button" onclick="appendNumber(8)">8</button>
+        <button class="button" onclick="appendNumber(9)">9</button>
+        <button class="button operator" onclick="appendOperator('-')">-</button>
+        <button class="button" onclick="appendNumber(4)">4</button>
+        <button class="button" onclick="appendNumber(5)">5</button>
+        <button class="button" onclick="appendNumber(6)">6</button>
+        <button class="button operator" onclick="appendOperator('+')">+</button>
+        <button class="button" onclick="appendNumber(1)">1</button>
+        <button class="button" onclick="appendNumber(2)">2</button>
+        <button class="button" onclick="appendNumber(3)">3</button>
+        <button class="button equal" onclick="calculateResult()">=</button>
+        <button class="button" onclick="appendNumber(0)">0</button>
+        <button class="button" onclick="appendNumber('.')">.</button>
+        <button class="button operator" onclick="appendOperator('sqrt(')">√</button>
+        <button class="button operator" onclick="appendOperator('pow(')">^</button>
+        <button class="button operator" onclick="appendOperator('sin(')">sin</button>
+        <button class="button operator" onclick="appendOperator('cos(')">cos</button>
+        <button class="button operator" onclick="appendOperator('tan(')">tan</button>
+        <button class="button operator" onclick="appendOperator('log(')">log</button>
+        <button class="button operator" onclick="appendOperator('ln(')">ln</button>
+    </div>
+</div>
+
+<script>
+    let display = document.getElementById('display');
+    let currentInput = '';
+
+    function appendNumber(number) {
+        if (currentInput === '0' && number !== '.') {
+            currentInput = '';
+        }
+        currentInput += number;
+        updateDisplay();
+    }
+
+    function appendOperator(operator) {
+        currentInput += operator;
+        updateDisplay();
+    }
+
+    function clearDisplay() {
+        currentInput = '0';
+        updateDisplay();
+    }
+
+    function calculateResult() {
+        try {
+            currentInput = eval(currentInput).toString();
+        } catch (error) {
+            currentInput = 'Error';
+        }
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        display.textContent = currentInput;
+    }
+
+    function calculateSquareRoot() {
+        currentInput = Math.sqrt(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+
+    function calculatePower() {
+        currentInput = Math.pow(parseFloat(currentInput), 2).toString();
+        updateDisplay();
+    }
+
+    function calculateSin() {
+        currentInput = Math.sin(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+
+    function calculateCos() {
+        currentInput = Math.cos(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+
+    function calculateTan() {
+        currentInput = Math.tan(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+
+    function calculateLog() {
+        currentInput = Math.log10(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+
+    function calculateLn() {
+        currentInput = Math.log(parseFloat(currentInput)).toString();
+        updateDisplay();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock & Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            background: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+        .clock, .stopwatch {
+            font-size: 40px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .buttons button {
+            font-size: 18px;
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .start { background: green; color: white; }
+        .stop { background: red; color: white; }
+        .reset { background: gray; color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- Digital Clock -->
+    <div class="container">
+        <div class="clock">
+            <span id="hours">00</span> :
+            <span id="minutes">00</span> :
+            <span id="seconds">00</span>
+            <span id="ampm">AM</span>
+        </div>
+    </div>
+
+    <!-- Stopwatch -->
+    <div class="container">
+        <div class="stopwatch">
+            <span id="sw-minutes">00</span> :
+            <span id="sw-seconds">00</span> :
+            <span id="sw-milliseconds">00</span>
+        </div>
+        <div class="buttons">
+            <button class="start" onclick="startStopwatch()">Start</button>
+            <button class="stop" onclick="stopStopwatch()">Stop</button>
+            <button class="reset" onclick="resetStopwatch()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Digital Clock Function
+        function updateClock() {
+            let now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+
+            // Convert 24-hour time to 12-hour format
+            hours = hours % 12 || 12;
+
+            // Add leading zeros
+            hours = String(hours).padStart(2, '0');
+            minutes = String(minutes).padStart(2, '0');
+            seconds = String(seconds).padStart(2, '0');
+
+            // Update clock
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+            document.getElementById("ampm").textContent = ampm;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Stopwatch Variables
+        let swMinutes = 0, swSeconds = 0, swMilliseconds = 0;
+        let stopwatchInterval;
+        let running = false;
+
+        function startStopwatch() {
+            if (!running) {
+                running = true;
+                stopwatchInterval = setInterval(updateStopwatch, 10); // Update every 10ms
+            }
+        }
+
+        function stopStopwatch() {
+            running = false;
+            clearInterval(stopwatchInterval);
+        }
+
+        function resetStopwatch() {
+            running = false;
+            clearInterval(stopwatchInterval);
+            swMinutes = swSeconds = swMilliseconds = 0;
+            updateStopwatchDisplay();
+        }
+
+        function updateStopwatch() {
+            swMilliseconds += 10;
+            if (swMilliseconds >= 1000) {
+                swMilliseconds = 0;
+                swSeconds++;
+            }
+            if (swSeconds >= 60) {
+                swSeconds = 0;
+                swMinutes++;
+            }
+            updateStopwatchDisplay();
+        }
+
+        function updateStopwatchDisplay() {
+            document.getElementById("sw-minutes").textContent = String(swMinutes).padStart(2, '0');
+            document.getElementById("sw-seconds").textContent = String(swSeconds).padStart(2, '0');
+            document.getElementById("sw-milliseconds").textContent = String(swMilliseconds / 10).padStart(2, '0');
+        }
+    </script>
+
+</body>
+</html>
