@@ -193,6 +193,28 @@ section{
     font-weight: 700;
     box-shadow: 0 0 40px #077b32;
 }
+.btn a {
+    display: inline-block;
+    width: 50%;
+    height: 6vh;
+    line-height: 6vh;
+    text-align: center;
+    background-color: #077b32;
+    color: white;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 120%;
+    text-decoration: none;
+    transition: 0.2s linear;
+}
+
+.btn a:hover {
+    scale: 1.1;
+    color: #077b32;
+    border: 2px solid #077b32;
+    background-color: transparent;
+    box-shadow: 0 0 40px #077b32;
+}
 @media (max-width:884px) {
     nav .logo{
         position: absolute;
