@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>Bikash Kafle's Portfolio</title>
+    <meta name="description" content="Portfolio of Bikash Kafle – BSc. CSIT student and developer from Pokhara, specializing in web development, design, and content creation.">
+    <link rel="canonical" href="https://bikash-kafle.com.np/">
+    <meta name="keywords" content="Bikash Kafle, Bikash, Kafle, developer, programmer, web developer, designer, CSIT, Pokhara, Nepal portfolio">
+    <meta name="author" content="Bikash Kafle">
+    <meta name="robots" content="index, follow">
+    <meta name="msvalidate.01" content="227CFEE9503F9E3ED73658D942E44C0D" />
+    <link rel="icon" href="main.png" type="image/png">
+    <meta name="theme-color" content="#077b32">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bikash Kafle – Developer & Designer">
+    <meta property="og:description" content="BSc. CSIT student and developer from Pokhara. I build modern, responsive websites and digital experiences.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://bikash-kafle.com.np/main.png">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bikash Kafle – Developer & Designer">
+    <meta name="twitter:description" content="BSc. CSIT student and developer from Pokhara. I build modern, responsive websites and digital experiences.">
+    <meta name="twitter:image" content="https://bikash-kafle.com.np/main.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bikash Kafle",
+      "url": "https://bikash-kafle.com.np/",
+      "image": "https://bikash-kafle.com.np/main.png",
+      "email": "mailto:bikashkafle@yahoo.com",
+      "telephone": "+9779749759654",
+      "jobTitle": "Developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pokhara",
+        "addressCountry": "NP"
+      },
+      "sameAs": [
+        "https://github.com/bkskafle",
+        "https://facebook.com/bikash.fb",
+        "https://www.linkedin.com/in/bkskafle"
+      ]
+    }
+    </script>
     <style>
         /* CSS Styles */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
@@ -412,54 +457,62 @@
         }
 
         /* Skills Section */
-        .skills-container {
+        .skills-logos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .skill-card {
-            background-color: #111;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            border-color: #077b32;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(7, 123, 50, 0.3);
-        }
-
-        .skill-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #077b32;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 20px;
             align-items: center;
-            margin: 0 auto 20px;
+            justify-items: center;
+            margin-top: 20px;
         }
 
-        .skill-icon i {
-            font-size: 2rem;
-            color: white;
+        .skills-logos i {
+            font-size: 48px;
+            filter: drop-shadow(0 0 6px rgba(7,123,50,0.25));
         }
 
-        .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: white;
+        .skill-bars {
+            max-width: 900px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
         }
 
-        .skill-card p {
-            color: #ccc;
-            line-height: 1.6;
+        .bar {
+            background: #0e0e0e;
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+
+        .bar-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .bar-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .bar-track {
+            width: 100%;
+            height: 10px;
+            background: #1a1a1a;
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .bar-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #0bbf57, #077b32);
+            border-right: 2px solid rgba(255,255,255,0.2);
         }
 
         /* Services Section */
@@ -662,7 +715,6 @@
             }
         }
     </style>
-    <meta name="msvalidate.01" content="227CFEE9503F9E3ED73658D942E44C0D" />
 </head>
 <body>
     <!-- Navbar -->
@@ -706,10 +758,10 @@
                     I love programming, designing, and exploring new technologies. Let's build something amazing together!
                 </p>
                 <div class="social-links">
-                    <a href="https://github.com/bkskafle" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/bikash.fb" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://m.me/bikash.fb" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"><i class="fa-brands fa-facebook-messenger"></i></a>
-                    <a href="https://www.linkedin.com/in/bkskafle" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/bkskafle" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://facebook.com/bikash.fb" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://m.me/bikash.fb" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href="https://www.linkedin.com/in/bkskafle" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="tel:+9779749759654" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1700"><i class="fa-solid fa-phone"></i></a>
                 </div>
                 <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
@@ -759,7 +811,6 @@
                     </div>
                 </div>
 <button class="view-projects-btn" onclick="window.open('https://github.com/bkskafle', '_blank')">View All Projects</button>
-                  <a href="https://github.com/bkskafle" target="_blank"></a>
             </div>
         </div>
     </section>
@@ -767,48 +818,62 @@
     <!-- Skills Section -->
     <section id="skills">
         <h1 data-aos="fade-up">My Skills</h1>
-        <div class="skills-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-code"></i>
+        
+        <!-- Logos grid -->
+        <div class="skills-logos" data-aos="fade-up" data-aos-delay="150">
+            <i class="devicon-c-plain colored" title="C"></i>
+            <i class="devicon-cplusplus-plain colored" title="C++"></i>
+            <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+            <i class="devicon-html5-plain colored" title="HTML5"></i>
+            <i class="devicon-css3-plain colored" title="CSS3"></i>
+            <i class="devicon-python-plain colored" title="Python"></i>
+            <i class="devicon-git-plain colored" title="Git"></i>
+            <i class="devicon-github-original" title="GitHub"></i>
+        </div>
+
+        <!-- Progress bars -->
+        <div class="skill-bars" data-aos="fade-up" data-aos-delay="250">
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-c-plain colored"></i> C</span>
+                    <span class="bar-value">60%</span>
                 </div>
-                <h3>Programming</h3>
-                <p>Python, C++, HTML, CSS</p>
+                <div class="bar-track"><div class="bar-progress" style="width:60%"></div></div>
             </div>
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-laptop-code"></i>
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+                    <span class="bar-value">50%</span>
                 </div>
-                <h3>Web Development</h3>
-                <p>Frontend & Backend Development</p>
+                <div class="bar-track"><div class="bar-progress" style="width:50%"></div></div>
             </div>
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="500">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-palette"></i>
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                    <span class="bar-value">15%</span>
                 </div>
-                <h3>Graphic Design</h3>
-                <p>UI/UX, Logo Design, Branding</p>
+                <div class="bar-track"><div class="bar-progress" style="width:15%"></div></div>
             </div>
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="600">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-video"></i>
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-html5-plain colored"></i> HTML5</span>
+                    <span class="bar-value">80%</span>
                 </div>
-                <h3>Video Editing</h3>
-                <p>Content Creation & Editing</p>
+                <div class="bar-track"><div class="bar-progress" style="width:80%"></div></div>
             </div>
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="700">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-gamepad"></i>
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-css3-plain colored"></i> CSS3</span>
+                    <span class="bar-value">20%</span>
                 </div>
-                <h3>Gaming</h3>
-                <p>PUBG MOBILE, Strategy Games</p>
+                <div class="bar-track"><div class="bar-progress" style="width:20%"></div></div>
             </div>
-            <div class="skill-card" data-aos="zoom-in" data-aos-delay="800">
-                <div class="skill-icon">
-                    <i class="fa-solid fa-mobile-alt"></i>
+            <div class="bar">
+                <div class="bar-top">
+                    <span class="bar-label"><i class="devicon-python-plain colored"></i> Python</span>
+                    <span class="bar-value">45%</span>
                 </div>
-                <h3>Mobile Development</h3>
-                <p>App Development & Design</p>
+                <div class="bar-track"><div class="bar-progress" style="width:45%"></div></div>
             </div>
         </div>
     </section>
@@ -910,14 +975,14 @@
                     <i class="fa-brands fa-facebook"></i>
                     <div>
                         <h4>Facebook</h4>
-                        <p><a href="https://facebook.com/bikash.fb" target="_blank" style="color: #ccc; text-decoration: none;">bikash.fb</a></p>
+                        <p><a href="https://facebook.com/bikash.fb" target="_blank" rel="noopener noreferrer" style="color: #ccc; text-decoration: none;">bikash.fb</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fa-brands fa-instagram"></i>
                     <div>
                         <h4>Instagram</h4>
-                        <p><a href="https://instagram.com/bikaskafle" target="_blank" style="color: #ccc; text-decoration: none;">bikaskafle</a></p>
+                        <p><a href="https://instagram.com/bikaskafle" target="_blank" rel="noopener noreferrer" style="color: #ccc; text-decoration: none;">bikaskafle</a></p>
                     </div>
                 </div>
             </div>
