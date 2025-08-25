@@ -742,7 +742,7 @@
                     </div>
                     <div class="detail-item">
                         <span class="label">Address:</span>
-                        <span class="value">Parbat, Nepal</span>
+                        <span class="value">Paiyun Rural Municipality-3,Parbat, Nepal</span>
                     </div>
                     <div class="detail-item">
                         <span class="label">Email:</span>
@@ -944,7 +944,7 @@
         }
 
         // Typewriter Effect
-        const texts = ["DEVELOPER", "DESIGNER", "GAMER"];
+        const texts = ["DEVELOPER", "PROGRAMMER" , "DESIGNER", "GAMER"];
         let speed = 100;
         const textElements = document.querySelector(".typewriter-text");
         let textIndex = 0;
@@ -972,6 +972,45 @@
         }
 
         window.onload = typeWriter;
+
+        // Contact Form Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.querySelector('.contact-form form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+                
+                // Validate form
+                if (!name || !email || !message) {
+                    alert('Please fill in all required fields (Name, Email, and Message)');
+                    return;
+                }
+                
+                // Create email body
+                const emailBody = `
+Name: ${name}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+Message: ${message}
+                `;
+                
+                // Open default email client with pre-filled data
+                const mailtoLink = `mailto:bikashkafle@yahoo.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(emailBody)}`;
+                window.open(mailtoLink);
+                
+                // Show success message
+                alert('Thank you for your message! Your email client should open with the message pre-filled.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        });
     </script>
 </body>
         </html>
