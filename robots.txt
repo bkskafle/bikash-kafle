@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bikash-kafle.com.np/sitemap.xml
+
