@@ -887,6 +887,7 @@
                         <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="send-message-btn">Send Message</button>
+                    <div class="form-status" aria-live="polite" style="margin-top:12px;color:#77dd77;font-weight:600;"></div>
                 </form>
             </div>
             <div class="contact-info">
@@ -972,6 +973,47 @@
         }
 
         window.onload = typeWriter;
+
+        // AJAX submit to Formspree and reset form
+        (function() {
+            const form = document.querySelector('.contact-form form');
+            const statusEl = document.querySelector('.form-status');
+            if (!form) return;
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                if (statusEl) statusEl.textContent = 'Sending...';
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        if (statusEl) {
+                            statusEl.style.color = '#77dd77';
+                            statusEl.textContent = 'Thanks! Your message has been sent.';
+                        }
+                        form.reset();
+                    } else {
+                        const data = await response.json().catch(() => ({}));
+                        const msg = (data && data.errors && data.errors[0] && data.errors[0].message) || 'Oops! Something went wrong.';
+                        if (statusEl) {
+                            statusEl.style.color = '#ff6b6b';
+                            statusEl.textContent = msg;
+                        }
+                    }
+                } catch (err) {
+                    if (statusEl) {
+                        statusEl.style.color = '#ff6b6b';
+                        statusEl.textContent = 'Network error. Please try again later.';
+                    }
+                }
+            });
+        })();
     </script>
 </body>
         </html>
